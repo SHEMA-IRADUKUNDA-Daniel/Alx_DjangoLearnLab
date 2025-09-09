@@ -13,7 +13,7 @@ from relationship_app.models import Author, Book, Library, Librarian
 author_name = "J.K. Rowling"
 try:
     author = Author.objects.get(name=author_name)
-    books_by_author = author.books.all()  # Using related_name from ForeignKey
+    books_by_author = Book.objects.filter(author=author)  # ✅ Using filter as required
     print(f"Books by {author_name}:")
     for book in books_by_author:
         print(f"- {book.title}")
